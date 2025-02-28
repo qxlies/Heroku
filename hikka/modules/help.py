@@ -325,8 +325,8 @@ class Help(loader.Module):
             (
                 self.config["desc_icon"]
                 + " {}\n"
-                + "<blockquote expandable="">📂 Core modules:\n{}</blockquote>"
-                + "<blockquote expandable="">▪️ Custom modules:\n{}</blockquote>"
+                + "<blockquote collapsed>📂 Core modules:\n{}</blockquote>"
+                + "<blockquote collapsed>▪️ Custom modules:\n{}</blockquote>"
                 + "{}"
             ).format(
                 reply,
