@@ -322,9 +322,16 @@ class Help(loader.Module):
 
         await utils.answer(
             message,
-            (self.config["desc_icon"] + " {}\n <blockquote>{}</blockquote><blockquote>{}</blockquote>").format(
+            (
+                self.config["desc_icon"]
+                + " {}\n"
+                + "<blockquote expandable>📂 Core modules:\n{}</blockquote>"
+                + "<blockquote expandable>▪️ Custom modules:\n{}</blockquote>"
+                + "{}"
+            ).format(
                 reply,
-                "".join(core_ + plain_ + (no_commands_ if force else [])),
+                "".join(core_),
+                "".join(plain_ + (no_commands_ if force else [])),
                 (
                     ""
                     if self.lookup("Loader").fully_loaded
