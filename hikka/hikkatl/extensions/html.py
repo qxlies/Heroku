@@ -297,7 +297,8 @@ class TextDecoration(ABC):
         pass
 
     @abstractmethod
-    def blockquote(self, value: str, expandable: bool) -> str:  # pragma: no cover
+    def blockquote(self, value: str, expandable: bool = False) -> str:  # pragma: no cover
+        """Abstract method for blockquote formatting"""
         pass
 
 
@@ -332,7 +333,14 @@ class HtmlDecoration(TextDecoration):
     def quote(self, value: str) -> str:
         return escape(value, quote=False)
 
-    def blockquote(self, value: str, expandable: bool) -> str:
+    def blockquote(self, value: str, expandable: bool = False) -> str:
+        """
+        Format text as blockquote with optional expandable attribute
+        
+        :param value: Text to format
+        :param expandable: Whether blockquote should be expandable
+        :return: HTML formatted string
+        """
         attrs = ' expandable' if expandable else ''
         return f"<blockquote{attrs}>{value}</blockquote>"
 
