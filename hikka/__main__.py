@@ -64,12 +64,14 @@ else:
         pass
     else:
         try:
-            import hikkatl
-        
+            import hikkatl  # noqa: F811
+
+            if tuple(map(int, hikkatl.__version__.split("."))) < (2, 0, 8):
+                raise ImportError
         except ImportError:
             print("🔄 Installing dependencies...")
-            #deps()
-            #restart()
+            deps()
+            restart()
 
     try:
         from . import log
@@ -79,8 +81,8 @@ else:
         from . import main
     except ImportError as e:
         print(f"{str(e)}\n🔄 Attempting dependencies installation... Just wait ⏱")
-        #deps()
-        #restart()
+        deps()
+        restart()
 
     if "HIKKA_DO_NOT_RESTART" in os.environ:
         del os.environ["HIKKA_DO_NOT_RESTART"]
