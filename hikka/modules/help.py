@@ -294,10 +294,10 @@ class Help(loader.Module):
 
             for cmd in icommands:
                 if first:
-                    tmp += f": ( 🤖 {cmd}"
+                    tmp += f": ( <emoji document_id=5870531058755178453>🤖</emoji> {cmd}"
                     first = False
                 else:
-                    tmp += f" | 🤖 {cmd}"
+                    tmp += f" | <emoji document_id=5870531058755178453>🤖</emoji> {cmd}"
 
             if commands or icommands:
                 tmp += " )\n"
