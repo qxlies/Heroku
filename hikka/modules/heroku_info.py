@@ -47,14 +47,14 @@ class HerokuInfoMod(loader.Module):
         )
 
     def _render_info(self, inline: bool) -> str:
-        try:
-            repo = git.Repo(search_parent_directories=True)
-            diff = repo.git.log([f"HEAD..origin/{version.branch}", "--oneline"])
-            upd = (
-                self.strings("update_required") if diff else self.strings("up-to-date")
-            )
-        except Exception:
-            upd = ""
+        # try:
+        #     repo = git.Repo(search_parent_directories=True)
+        #     diff = repo.git.log([f"HEAD..origin/{version.branch}", "--oneline"])
+        #     upd = (
+        #         self.strings("update_required") if diff else self.strings("up-to-date")
+        #     )
+        # except Exception:
+        #     upd = ""
 
         me = '<b><a href="tg://user?id={}">{}</a></b>'.format(
             self._client.hikka_me.id,

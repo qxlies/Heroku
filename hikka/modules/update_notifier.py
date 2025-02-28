@@ -77,43 +77,6 @@ class UpdateNotifier(loader.Module):
             ]
         )
 
-    @loader.loop(interval=60, autostart=True)
-    async def poller(self):
-        if self.config["disable_notifications"] or not self.get_changelog():
-            return
-
-        self._pending = self.get_latest()
-
-        if (
-            self.get("ignore_permanent", False)
-            and self.get("ignore_permanent") == self._pending
-        ):
-            await asyncio.sleep(60)
-            return
-
-        if self._pending not in {utils.get_git_hash(), self._notified}:
-            m = await self.inline.bot.send_animation(
-                self.tg_id,
-                "https://t.me/hikari_assets/71",
-                caption=self.strings("update_required").format(
-                    utils.get_git_hash()[:6],
-                    '<a href="https://github.com/coddrago/Heroku/compare/{}...{}">{}</a>'.format(
-                        utils.get_git_hash()[:12],
-                        self.get_latest()[:12],
-                        self.get_latest()[:6],
-                    ),
-                    self.get_changelog(),
-                ),
-                reply_markup=self._markup(),
-            )
-
-            self._notified = self._pending
-            self.set("ignore_permanent", False)
-
-            await self._delete_all_upd_messages()
-
-            self.set("upd_msg", m.message_id)
-
     async def _delete_all_upd_messages(self):
         for client in self.allclients:
             with contextlib.suppress(Exception):
