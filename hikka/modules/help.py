@@ -27,7 +27,7 @@ class Help(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "core_emoji",
-                "<emoji document_id=4974681956907221809>▪️</emoji>",
+                "<emoji document_id=5341492148468465410>📂</emoji>",
                 lambda: "Core module bullet",
             ),
             loader.ConfigValue(
@@ -42,7 +42,7 @@ class Help(loader.Module):
             ),
             loader.ConfigValue(
                 "desc_icon",
-                "<emoji document_id=5188377234380954537>🪐</emoji>",
+                "<emoji document_id=5258023599419171861>🔧</emoji>",
                 lambda: "Desc emoji",
             ),
         )
