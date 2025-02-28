@@ -259,12 +259,12 @@ class Help(loader.Module):
                 and not getattr(mod, "callback_handlers", None)
             ):
                 no_commands_ += [
-                    "\n{} <code>{}</code>".format(self.config["empty_emoji"], name)
+                    "{} <code>{}</code>\n".format(self.config["empty_emoji"], name)
                 ]
                 continue
 
             core = mod.__origin__.startswith("<core")
-            tmp += "\n{} <code>{}</code>".format(
+            tmp += "{} <code>{}</code>".format(
                 self.config["core_emoji"] if core else self.config["plain_emoji"], name
             )
             first = True
@@ -300,7 +300,7 @@ class Help(loader.Module):
                     tmp += f" | 🤖 {cmd}"
 
             if commands or icommands:
-                tmp += " )"
+                tmp += " )\n"
                 if core:
                     core_ += [tmp]
                 else:
