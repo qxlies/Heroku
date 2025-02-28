@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_namespace_packages
 import re
 
 with open("version.py", "r") as f:
@@ -33,17 +33,13 @@ setup(
 
     keywords='telegram api chat client library messaging mtproto',
     
-    packages=['hikkatl'],
-    package_dir={'hikkatl': '.'},
+    packages=find_namespace_packages(include=['*']),
     
-    package_data={'hikkatl': [
-        'client/*',
-        'crypto/*', 
-        'extensions/*',
-        'network/*',
-        'tl/*',
-        '*.py'
-    ]},
+    package_data={
+        '': ['*.py'],
+    },
+    
+    include_package_data=True,
     
     install_requires=[
         'pyaes',
