@@ -1,8 +1,18 @@
-from setuptools import setup, find_namespace_packages
+from setuptools import setup, find_packages
 import re
+import os
 
 with open("version.py", "r") as f:
     version = re.search(r"__version__ = '(.+)'", f.read()).group(1)
+
+def find_all_packages():
+    """Находит все пакеты рекурсивно"""
+    packages = []
+    for root, _, _ in os.walk('.'):
+        if root == '.' or not os.path.exists(os.path.join(root, '__init__.py')):
+            continue
+        packages.append(root[2:].replace('/', '.'))
+    return packages
 
 setup(
     name='hikkatl',
@@ -33,13 +43,8 @@ setup(
 
     keywords='telegram api chat client library messaging mtproto',
     
-    packages=find_namespace_packages(include=['*']),
-    
-    package_data={
-        '': ['*.py'],
-    },
-    
-    include_package_data=True,
+    packages=find_all_packages(),
+    package_dir={'hikkatl': '.'},
     
     install_requires=[
         'pyaes',
