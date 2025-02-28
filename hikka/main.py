@@ -967,6 +967,6 @@ class Hikka:
         self.loop.close()
 
 
-hikkatl.extensions.html.CUSTOM_EMOJIS = not get_config_key("disable_custom_emojis")
+#hikkatl.extensions.html.CUSTOM_EMOJIS = not get_config_key("disable_custom_emojis")
 
 hikka = Hikka()
