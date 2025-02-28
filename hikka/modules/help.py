@@ -320,13 +320,15 @@ class Help(loader.Module):
         core_.sort(key=extract_name)
         no_commands_.sort(key=extract_name)
 
+        from hikkatl.extensions.html import html_decoration
+
         await utils.answer(
             message,
             (
                 self.config["desc_icon"]
                 + " {}\n"
-                + "<blockquote expandable>📂 Core modules:\n{}</blockquote>"
-                + "<blockquote expandable>▪️ Custom modules:\n{}</blockquote>"
+                + html_decoration.blockquote("📂 Core modules:\n{}", True)
+                + html_decoration.blockquote("▪️ Custom modules:\n{}", True)
                 + "{}"
             ).format(
                 reply,
