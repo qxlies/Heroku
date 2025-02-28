@@ -329,7 +329,7 @@ class Help(loader.Module):
                 + " {}\n"
                 + html_decoration.blockquote("<emoji document_id=5208794731517069028>⚙️</emoji> Core modules:\n")
                 + html_decoration.blockquote("{}")
-                + html_decoration.blockquote("<emoji document_id=4913497231492908158>👤</emoji> Custom modules:\n")
+                + html_decoration.blockquote("<emoji document_id=4913497231492908158>👤</emoji> User modules:\n")
                 + html_decoration.blockquote("{}")
                 + "{}"
             ).format(
