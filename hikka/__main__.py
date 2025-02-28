@@ -59,6 +59,19 @@ elif __package__ != "hikka":  # In case they did python __main__.py
     print("🚫 Error: you cannot run this as a script; you must execute as a package")
 else:
     try:
+        import hikkatl
+    except Exception:
+        pass
+    else:
+        try:
+            import hikkatl
+        
+        except ImportError:
+            print("🔄 Installing dependencies...")
+            #deps()
+            #restart()
+
+    try:
         from . import log
 
         log.init()
@@ -67,7 +80,7 @@ else:
     except ImportError as e:
         print(f"{str(e)}\n🔄 Attempting dependencies installation... Just wait ⏱")
         #deps()
-        restart()
+        #restart()
 
     if "HIKKA_DO_NOT_RESTART" in os.environ:
         del os.environ["HIKKA_DO_NOT_RESTART"]
